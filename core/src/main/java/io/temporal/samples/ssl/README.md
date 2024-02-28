@@ -14,10 +14,7 @@ Before running the example you need to export the following env variables:
 - TEMPORAL_CLIENT_KEY: For Temporal Cloud see requirements [here](https://docs.temporal.io/cloud/how-to-manage-certificates-in-temporal-cloud#end-entity-certificates).
 - TEMPORAL_SERVER_HOSTNAME: (set this when you use PrivateLink). Use your Temporal Cloud endpoint: `${namespace}.tmprl.cloud`.
 
-```bash
-
 ## Running this sample with env vars set inline (for PrivateLink config)
-
 ```bash
 TEMPORAL_CLIENT_CERT="/path/to/client.pem" \
 TEMPORAL_CLIENT_KEY="/path/to/client.key" \
