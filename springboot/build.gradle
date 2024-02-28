@@ -15,7 +15,7 @@ dependencies {
     runtimeOnly "com.h2database:h2"
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     dependencies {
-        errorproneJavac('com.google.errorprone:javac:9+181-r4173-1')
+        errorproneJavac('com.google.errorprone:javac:1+')
         errorprone('com.google.errorprone:error_prone_core:2.25.0')
     }
 }
