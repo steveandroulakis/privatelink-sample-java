@@ -34,7 +34,7 @@ dependencies {
     implementation group: 'net.thisptr', name: 'jackson-jq', version: '1.0.0-preview.20230409'
 
     // we don't update it to 2.1.0 because 2.1.0 requires Java 11
-    implementation 'com.codingrodent:jackson-json-crypto:1.1.0'
+    implementation 'com.codingrodent:jackson-json-crypto:2.2.0'
 
     testImplementation "junit:junit:4.13.2"
     testImplementation "org.mockito:mockito-core:5.8.0"
