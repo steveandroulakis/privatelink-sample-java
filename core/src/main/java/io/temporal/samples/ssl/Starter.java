@@ -51,12 +51,18 @@ public class Starter {
     // Your registered namespace.
     String namespace = System.getenv("TEMPORAL_NAMESPACE");
 
-    // Create SSL enabled client by passing SslContext, created by SimpleSslContextBuilder.
+    // Create SSL enabled client by passing SslContext, created by
+    // SimpleSslContextBuilder.
+    // @steveandroulakis MODIFICATION
+    // Use TEMPORAL_SERVER_HOSTNAME to override the authority name used for TLS handshakes.
     WorkflowServiceStubs service =
         WorkflowServiceStubs.newServiceStubs(
             WorkflowServiceStubsOptions.newBuilder()
                 .setSslContext(SimpleSslContextBuilder.forPKCS8(clientCert, clientKey).build())
                 .setTarget(targetEndpoint)
+                // Override the authority name used for TLS handshakes
+                .setChannelInitializer(
+                    c -> c.overrideAuthority(System.getenv("TEMPORAL_SERVER_HOSTNAME")))
                 .build());
 
     // Now setup and start workflow worker, which uses SSL enabled gRPC service to communicate with

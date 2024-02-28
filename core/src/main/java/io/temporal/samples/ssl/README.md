@@ -8,18 +8,26 @@ This is required to connect with Temporal Cloud or any production Temporal deplo
 
 Before running the example you need to export the following env variables: 
 
-- TEMPORAL_ENDPOINT: grpc endpoint, for Temporal Cloud would like `${namespace}.tmprl.cloud:7233`.
+- TEMPORAL_ENDPOINT: grpc endpoint, for Temporal Cloud would like `${namespace}.tmprl.cloud:7233`. For PrivateLink use your AWS endpoint.
 - TEMPORAL_NAMESPACE: Namespace.
 - TEMPORAL_CLIENT_CERT: For Temporal Cloud see requirements [here](https://docs.temporal.io/cloud/how-to-manage-certificates-in-temporal-cloud#end-entity-certificates).
 - TEMPORAL_CLIENT_KEY: For Temporal Cloud see requirements [here](https://docs.temporal.io/cloud/how-to-manage-certificates-in-temporal-cloud#end-entity-certificates).
-
-## Running this sample
+- TEMPORAL_SERVER_HOSTNAME: (set this when you use PrivateLink). Use your Temporal Cloud endpoint: `${namespace}.tmprl.cloud`.
 
 ```bash
+
+## Running this sample with env vars set inline (for PrivateLink config)
+
+```bash
+TEMPORAL_CLIENT_CERT="/path/to/client.pem" \
+TEMPORAL_CLIENT_KEY="/path/to/client.key" \
+TEMPORAL_ENDPOINT="<YOUR_PRIVATELINK_URL>:7233" \
+TEMPORAL_NAMESPACE="<NAMESPACE>.<ACCOUNT>" \
+TEMPORAL_SERVER_HOSTNAME="<NAMESPACE>.<ACCOUNT>.tmprl.cloud:7233" \
 ./gradlew -q execute -PmainClass=io.temporal.samples.ssl.Starter
 ```
 
-## Run SslEnabledWorkerCustomCA Sample
+## Run SslEnabledWorkerCustomCA Sample (NOT FOR TEMPORAL CLOUD)
 
 This sample shows how to start a worker that connects to a temporal cluster with mTLS enabled; created by ([tls-simple sample](https://github.com/temporalio/samples-server/tree/main/tls/tls-simple));
 
